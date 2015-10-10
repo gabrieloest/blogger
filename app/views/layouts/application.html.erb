@@ -5,16 +5,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
 </head>
 <body>
-  <p class="flash">
-    <%= flash.notice %>
-  </p>
-  <div id="container">
-      <div id="content">
-        <%= yield %>
-        <hr>
-        <h6>
+  <div class="blog-masthead">
+    <div class="container">
+      <nav class="blog-nav">
+        <a class="blog-nav-item active" href="/">Home</a>
+        <a class="blog-nav-item" href="/tags">Tags</a>
+        <a class="blog-nav-item" href="/authors/new">New Author</a>
+        <a class="blog-nav-item" href="#">Top Articles</a>
+        <a class="blog-nav-item" href="#">About</a>
+        <h6 class="blog-nav-item">
           <% if logged_in? %>
             <%= "Logged in as #{current_user.email}" %>
             <%= link_to "(logout)", logout_path %>
@@ -22,8 +32,63 @@
             <%= link_to "(login)", login_path %>
           <% end %>
         </h6>
-      </div>
+      </nav>
     </div>
+  </div>
+
+  <div class="container">
+    <div class="blog-header">
+      <h1 class="blog-title">The Bootstrap Blog</h1>
+      <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+    </div>
+    <div class="row">
+
+      <div class="col-sm-8 blog-main">
+        <p class="flash">
+          <%= flash.notice %>
+        </p>
+        <%= yield %>
+      </div>
+
+      <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>This is a blog about my experience with <em>Ruby on Rails</em></p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+    <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
 
 </body>
 

@@ -1,16 +1,20 @@
-<h1><%= @article.title %></h1>
-<p>
-  Tags:
-  <% @article.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
+<div class="blog-post">
+  <h2 class="blog-post-title"><%= @article.title %></h2>
+  <p class="blog-post-meta"><%= @article.created_at %> <a href="#">Jacob</a></p>
+  <p>
+    Tags:
+    <% @article.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag) %>
+    <% end %>
+  </p>
+
+  <% if @article.image.exists? %>
+    <p><%= image_tag @article.image.url(:medium) %></p>
   <% end %>
-</p>
 
-<% if @article.image.exists? %>
-  <p><%= image_tag @article.image.url(:medium) %></p>
-<% end %>
+  <p><%= @article.body %></p>
 
-<p><%= @article.body %></p>
+</div>
 
 <%= render partial: 'comments/form' %>
 
