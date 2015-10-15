@@ -24,4 +24,8 @@ class Article < ActiveRecord::Base
    order('comments_count DESC').limit(5)
   end
 
+  def self.archives
+    Article.all.group_by { |t| t.created_at.strftime("%B %Y")}
+  end
+
 end

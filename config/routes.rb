@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pages/about'
+
   root to: 'articles#index'
   resources :articles do
     resources :comments
@@ -13,6 +15,10 @@ Rails.application.routes.draw do
   get 'logout' => 'author_sessions#destroy'
 
   get 'topten' => 'articles#top_ten'
+
+  get 'about' => 'pages#about'
+
+  get 'articles/archive/:archive' => 'articles#archive', as: 'articles_by_archive'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

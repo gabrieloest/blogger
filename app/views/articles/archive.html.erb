@@ -1,0 +1,7 @@
+<h1 class="blog-title">Articles of <%= @monthyear %></h1>
+<% @articles.each do |article| %>
+  <div class="blog-post">
+    <h2 class="blog-post-title"><%= link_to article.title, article_path(article) %></h2>
+    <p class="blog-post-meta"><%= article.created_at %> <a href="#"><%= article.author.username %></a></p>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
 
-  before_filter :require_login, except: [:index, :show, :top_ten]
+  before_filter :require_login, except: [:index, :show, :top_ten, :archive]
 
   def index
     @articles = Article.all
@@ -55,6 +55,12 @@ class ArticlesController < ApplicationController
 
   def top_ten
     @articles = Article.top
+  end
+
+  def archive
+    articles_archives = Article.archives
+    @monthyear = params[:archive]
+    @articles = articles_archives[@monthyear]
   end
 
 end

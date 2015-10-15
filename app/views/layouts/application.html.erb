@@ -23,10 +23,9 @@
         <a class="blog-nav-item" href="/tags">Tags</a>
         <a class="blog-nav-item" href="/authors/new">New Author</a>
         <a class="blog-nav-item" href="/topten">Top Articles</a>
-        <a class="blog-nav-item" href="#">About</a>
+        <a class="blog-nav-item" href="/about">About</a>
         <% if logged_in? %>
-          <%= "Logged in as #{current_user.email}" %>
-          <a class="blog-nav-item right" href="/logout">Logout</a>
+          <span class="right"><%= "Logged in as #{current_user.username}" %> <a class="blog-nav-item" href="/logout">Logout</a></span>
         <% else %>
           <a class="blog-nav-item right" href="/login">Login</a>
         <% end %>
@@ -56,18 +55,9 @@
           <div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
+              <% Article.archives.sort.reverse.each do |archive, posts| %>
+                <li><%= link_to archive, articles_by_archive_path(archive) %></a></li>
+              <% end %>
             </ol>
           </div>
           <div class="sidebar-module">
