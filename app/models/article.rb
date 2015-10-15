@@ -20,5 +20,8 @@ class Article < ActiveRecord::Base
     self.tags = new_or_found_tags
   end
 
+  def self.top
+   order('comments_count DESC').limit(5)
+  end
 
 end

@@ -22,16 +22,14 @@
         <a class="blog-nav-item active" href="/">Home</a>
         <a class="blog-nav-item" href="/tags">Tags</a>
         <a class="blog-nav-item" href="/authors/new">New Author</a>
-        <a class="blog-nav-item" href="#">Top Articles</a>
+        <a class="blog-nav-item" href="/topten">Top Articles</a>
         <a class="blog-nav-item" href="#">About</a>
-        <h6 class="blog-nav-item">
-          <% if logged_in? %>
-            <%= "Logged in as #{current_user.email}" %>
-            <%= link_to "(logout)", logout_path %>
-          <% else %>
-            <%= link_to "(login)", login_path %>
-          <% end %>
-        </h6>
+        <% if logged_in? %>
+          <%= "Logged in as #{current_user.email}" %>
+          <a class="blog-nav-item right" href="/logout">Logout</a>
+        <% else %>
+          <a class="blog-nav-item right" href="/login">Login</a>
+        <% end %>
       </nav>
     </div>
   </div>

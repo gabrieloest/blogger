@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
 
-  before_filter :require_login, except: [:index, :show]
+  before_filter :require_login, except: [:index, :show, :top_ten]
 
   def index
     @articles = Article.all
@@ -51,6 +51,10 @@ class ArticlesController < ApplicationController
     flash.notice = "Article '#{@article.title}' Updated!"
 
     redirect_to article_path(@article)
+  end
+
+  def top_ten
+    @articles = Article.top
   end
 
 end
