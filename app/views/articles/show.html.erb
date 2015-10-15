@@ -1,6 +1,6 @@
 <div class="blog-post">
   <h2 class="blog-post-title"><%= @article.title %></h2>
-  <p class="blog-post-meta"><%= @article.created_at %> <a href="#">Jacob</a></p>
+  <p class="blog-post-meta"><%= @article.created_at %> <a href="#"><%= @article.author.username %></a></p>
   <p>
     Tags:
     <% @article.tags.each do |tag| %>
